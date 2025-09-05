@@ -44,7 +44,7 @@ export default function Support() {
             GoFundMe
           </a>
           <a
-            href="https://patreon.com/FelonyFitness"
+            href="https://patreon.com/cw/FelonyFitness"
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-semibold shadow transition"
