@@ -1,4 +1,6 @@
+// src/pages/Support.jsx
 import React from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -72,12 +74,12 @@ export default function Support() {
           Cover the cost of program participation for one or more individuals. 
           Your sponsorship makes second chances possible.
         </p>
-        <a
-          href="/sponsor"
+        <Link
+          to="/sponsor"
           className="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-semibold shadow transition"
         >
           Sponsor Now
-        </a>
+        </Link>
       </section>
 
       {/* VOLUNTEER */}
@@ -87,16 +89,15 @@ export default function Support() {
           Share your skills and time as a coach, mentor, or advocate. 
           Volunteers are the backbone of building lasting impact.
         </p>
-        <a
-          href="/volunteer"
+        <Link
+          to="/volunteer"
           className="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-semibold shadow transition"
         >
           Get Involved
-        </a>
+        </Link>
       </section>
-	  
-	  
-       {/* GLOBAL FOOTER */}
+
+      {/* GLOBAL FOOTER */}
       <Footer />
     </div>
   );
