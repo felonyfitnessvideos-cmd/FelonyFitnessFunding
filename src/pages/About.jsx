@@ -5,27 +5,13 @@ import { Link } from "react-router-dom";
 import { Instagram, Music2, Mail, Youtube, Phone } from "lucide-react";
 import SectionWrapper from "../components/SectionWrapper";
 import TeamCard from "../components/TeamCard";
+import Navbar from "../components/Navbar"; // <-- import the standardized Navbar
 
 export default function About() {
   return (
     <div className="bg-gray-900 text-gray-100 font-sans">
-
       {/* STICKY NAVIGATION */}
-      <nav className="fixed top-0 left-0 w-full bg-gray-900 shadow z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link to="/">
-            <img src={logo} alt="Felony Fitness Logo" className="h-10 w-auto" />
-          </Link>
-          <div className="hidden md:flex space-x-6 text-sm uppercase">
-            <a href="#mission" className="hover:text-orange-400">Mission</a>
-            <a href="#story" className="hover:text-orange-400">Our Story</a>
-            <a href="#bio" className="hover:text-orange-400">Founder Bio</a>
-            <a href="#values" className="hover:text-orange-400">Philosophy & Values</a>
-            <a href="#team" className="hover:text-orange-400">Our Team</a>
-            <a href="#vision" className="hover:text-orange-400">Vision</a>
-          </div>
-        </div>
-      </nav>
+      <Navbar /> 
 
       {/* HERO / MISSION */}
       <SectionWrapper id="mission" className="pt-32 pb-20 px-6 text-center max-w-4xl mx-auto">
@@ -157,12 +143,12 @@ export default function About() {
           roles as mentors, trainers, entrepreneurs, and community leaders—proof that discipline, resilience, 
           and support can turn struggle into success.
         </p>
-        <a
-          href="/signup"
-          className="mt-8 inline-block px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-semibold shadow transition"
-        >
-          Join Us
-        </a>
+        <Link
+  to="/join-programs"
+  className="mt-8 inline-block px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-semibold shadow transition"
+>
+  Join Us
+</Link>
       </SectionWrapper>
 
       {/* CONTACT FOOTER */}

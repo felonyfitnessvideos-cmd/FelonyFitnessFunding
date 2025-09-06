@@ -140,7 +140,7 @@ export default function App() {
       </section>
 
       {/* CALL TO ACTION */}
-      <section id="signup" className="py-20 px-6 max-w-6xl mx-auto text-center">
+      <section id="get-involved" className="py-20 px-6 max-w-6xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">Get Involved</h2>
         <p className="text-gray-300 max-w-3xl mx-auto mb-12">
           Real change takes a community. Every dollar donated, every hour volunteered, 
@@ -189,7 +189,7 @@ export default function App() {
           </div>
         </div>
         <Link
-          to="/support"
+          to="/impact"
           className="inline-block mt-6 px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-semibold shadow transition"
         >
           Learn More About How Your Support Helps
@@ -197,18 +197,19 @@ export default function App() {
       </section>
 
       {/* BUSINESS PLAN */}
-      <section id="business" className="py-20 px-6 max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Business Plan</h2>
-        <p className="text-gray-300 max-w-3xl mx-auto mb-12">
-          Learn how Felony Fitness will scale its impact through sustainable, socially impactful business models.
-        </p>
-        <a
-          href="/businessplan"
-          className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold shadow-lg transition"
-        >
-          View Business Plan
-        </a>
-      </section>
+<section id="business" className="py-20 px-6 max-w-6xl mx-auto text-center">
+  <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Business Plan</h2>
+  <p className="text-gray-300 max-w-3xl mx-auto mb-12">
+    Learn how Felony Fitness will scale its impact through sustainable, socially impactful business models.
+  </p>
+  <Link
+    to="/businessplan"
+    className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold shadow-lg transition"
+  >
+    View Business Plan
+  </Link>
+</section>
+
 
       {/* FOOTER */}
       <Footer />

@@ -65,7 +65,7 @@ const BreakEvenChart = () => <div className="mb-6 p-4 bg-gray-800 rounded">[Brea
     { category: "Contingency", amount: 3500 },
   ];
 
-export default function Financials() {
+function Financials() {
   return (
     <div className="bg-gray-900 text-gray-100 min-h-screen font-sans p-6">
       <h2 className="text-2xl font-bold mb-4">Financials</h2>
@@ -117,9 +117,6 @@ export default function Financials() {
       <p className="mb-4">
         Use of Capital: Funds will be allocated to startup costs, program development, marketing, equipment, and contingency reserves to ensure a smooth launch and sustainable growth.
       </p>
-
-    <div className="bg-gray-900 text-gray-100 min-h-screen font-sans p-6">
-      <h2 className="text-2xl font-bold mb-4">Financials – Phase One (Year 1)</h2>
 
      {/* Charts */}
       <section className="mb-10">
@@ -200,7 +197,4 @@ export default function Financials() {
     </div>
   );
 }
-
-    </div>
-  );
-}
+export default Financials;

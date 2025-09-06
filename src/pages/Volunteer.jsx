@@ -1,28 +1,13 @@
-// src/pages/Volunteer.jsx
 import React from "react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.png";
-import { Instagram, Music2, Mail, Youtube, Phone } from "lucide-react";
 
 export default function Volunteer() {
   return (
-    <div className="bg-gray-900 text-gray-100 min-h-screen font-sans">
-      {/* NAVIGATION */}
-      <nav className="fixed top-0 left-0 w-full bg-gray-900 shadow z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link to="/">
-            <img src={logo} alt="Felony Fitness Logo" className="h-10 w-auto" />
-          </Link>
-          <div className="hidden md:flex space-x-8 text-sm uppercase">
-            <Link to="/about" className="hover:text-orange-400">About</Link>
-            <Link to="/programs" className="hover:text-orange-400">Programs</Link>
-            <Link to="/support" className="hover:text-orange-400">Support</Link>
-            <Link to="/sponsor" className="hover:text-orange-400">Sponsor</Link>
-            <Link to="/volunteer" className="hover:text-orange-400">Volunteer</Link>
-            <Link to="/business-plan" className="hover:text-orange-400">Business Plan</Link>
-          </div>
-        </div>
-      </nav>
+    <div className="bg-gray-900 text-gray-100 font-sans min-h-screen flex flex-col">
+      {/* GLOBAL NAV */}
+      <Navbar />
 
       {/* HERO */}
       <section className="bg-gray-800 py-20 px-6 text-center mt-16">
@@ -56,7 +41,7 @@ export default function Volunteer() {
         </div>
       </section>
 
-      {/* SIGNUP CALL */}
+      {/* GETINVOLVED CALL */}
       <section className="bg-gray-800 py-16 px-6 text-center">
         <h2 className="text-3xl font-bold mb-6">Get Started</h2>
         <p className="text-gray-300 mb-8 max-w-3xl mx-auto">
@@ -69,7 +54,9 @@ export default function Volunteer() {
           Volunteer Today
         </Link>
       </section>
-{/*CTA BoardOfDirectors*/}
+
+
+{/* CTA BoardOfDirectors */}
 <section className="bg-gray-900 py-16 px-6 text-center">
   <h2 className="text-2xl font-bold mb-4">Join Our Board of Directors</h2>
   <p className="text-gray-300 max-w-2xl mx-auto mb-6">
@@ -79,60 +66,18 @@ export default function Volunteer() {
     If you believe in second chances, community wellness, and the power 
     of fitness, we’d love to hear from you.
   </p>
-  <a
-    href="/board"
+  <Link
+    to="/board"
     className="inline-block bg-indigo-600 hover:bg-indigo-700 
                text-white font-semibold py-3 px-6 rounded-2xl shadow-lg"
   >
     Learn More & Apply
-  </a>
+  </Link>
 </section>
 
-      {/* CONTACT FOOTER */}
-      <footer className="bg-gray-800 py-12 text-center text-gray-300 text-sm mt-16">
-        <div className="max-w-6xl mx-auto px-6 mb-8">
-          <h3 className="text-lg font-semibold mb-6 text-white">Connect With Us</h3>
-          <div className="flex flex-wrap justify-center items-center gap-6">
-            <a
-              href="https://www.instagram.com/davefelonyfitness/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:text-orange-400 transition"
-            >
-              <Instagram className="w-5 h-5" /> @davefelonyfitness
-            </a>
-            <a
-              href="https://www.tiktok.com/@felonyfitness.tiktok"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:text-orange-400 transition"
-            >
-              <Music2 className="w-5 h-5" /> @felonyfitness.tiktok
-            </a>
-            <a
-              href="mailto:felonyfitness@email.com"
-              className="flex items-center gap-2 hover:text-orange-400 transition"
-            >
-              <Mail className="w-5 h-5" /> felonyfitness@email.com
-            </a>
-            <a
-              href="mailto:felony.fitness.videos@gmail.com"
-              className="flex items-center gap-2 hover:text-orange-400 transition"
-            >
-              <Youtube className="w-5 h-5" /> felony.fitness.videos@gmail.com
-            </a>
-            <a
-              href="tel:+19513324841"
-              className="flex items-center gap-2 hover:text-orange-400 transition"
-            >
-              <Phone className="w-5 h-5" /> (951) 332-4841
-            </a>
-          </div>
-        </div>
-        <p className="text-gray-500 mt-6">
-          © {new Date().getFullYear()} Felony Fitness. All rights reserved.
-        </p>
-      </footer>
+
+       {/* GLOBAL FOOTER */}
+      <Footer />
     </div>
   );
 }

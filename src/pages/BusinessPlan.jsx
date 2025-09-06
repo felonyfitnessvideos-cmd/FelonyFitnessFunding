@@ -66,7 +66,7 @@ export default function BusinessPlan() {
       <Navbar />
 
       {/* HERO */}
-      <section className="bg-gray-800 py-24 px-6 text-center">
+      <section className="bg-gray-800 pt-32 pb-24 px-6 text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">Felony Fitness Business Plan</h1>
         <p className="text-gray-300 max-w-3xl mx-auto mb-12">
           Explore our mission, programs, target market, and roadmap to empower justice-impacted individuals through fitness, wellness, and community support.

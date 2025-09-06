@@ -15,13 +15,14 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8 text-sm uppercase">
-          <Link to="/impact" className="hover:text-orange-400">Impact</Link>
           <Link to="/about" className="hover:text-orange-400">About</Link>
-          <Link to="/programs" className="hover:text-orange-400">Programs</Link>
-          <Link to="/join-programs" className="hover:text-orange-400">Sign Up</Link>
+          <Link to="/support" className="hover:text-orange-400">Donate</Link>
           <Link to="/sponsor" className="hover:text-orange-400">Sponsor</Link>
+          <Link to="/programs" className="hover:text-orange-400">Programs</Link>
+          <Link to="/impact" className="hover:text-orange-400">Impact</Link>
           <Link to="/events" className="hover:text-orange-400">Events</Link>
           <Link to="/businessplan" className="hover:text-orange-400">Business Plan</Link>
+          <Link to="/resources" className="hover:text-orange-400">Resources</Link>
         </div>
 
         {/* Mobile Hamburger */}
@@ -36,13 +37,14 @@ export default function Navbar() {
       {/* Mobile Dropdown */}
       {menuOpen && (
         <div className="md:hidden bg-gray-800 px-6 py-4 space-y-4 text-sm uppercase">
-          <Link to="/impact" className="block hover:text-orange-400" onClick={() => setMenuOpen(false)}>Impact</Link>
           <Link to="/about" className="block hover:text-orange-400" onClick={() => setMenuOpen(false)}>About</Link>
-          <Link to="/programs" className="block hover:text-orange-400" onClick={() => setMenuOpen(false)}>Programs</Link>
-          <Link to="/join-programs" className="block hover:text-orange-400" onClick={() => setMenuOpen(false)}>Sign Up</Link>
+          <Link to="/support" className="block hover:text-orange-400" onClick={() => setMenuOpen(false)}>Donate</Link>
           <Link to="/sponsor" className="block hover:text-orange-400" onClick={() => setMenuOpen(false)}>Sponsor</Link>
+          <Link to="/programs" className="block hover:text-orange-400" onClick={() => setMenuOpen(false)}>Programs</Link>
+          <Link to="/impact" className="block hover:text-orange-400" onClick={() => setMenuOpen(false)}>Impact</Link>
           <Link to="/events" className="block hover:text-orange-400" onClick={() => setMenuOpen(false)}>Events</Link>
           <Link to="/businessplan" className="block hover:text-orange-400" onClick={() => setMenuOpen(false)}>Business Plan</Link>
+          <Link to="/resources" className="block hover:text-orange-400" onClick={() => setMenuOpen(false)}>Resources</Link>
         </div>
       )}
     </nav>

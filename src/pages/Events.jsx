@@ -48,7 +48,8 @@ export default function Events() {
     <div className="bg-gray-900 text-gray-100 font-sans min-h-screen">
       <Navbar />
 
-      <section className="py-24 px-6 max-w-6xl mx-auto text-center">
+      <section className="pt-32 px-6 pb-24 max-w-6xl mx-auto text-center">
+
         <h1 className="text-4xl md:text-5xl font-bold mb-6">Upcoming Events</h1>
         <p className="text-gray-300 max-w-3xl mx-auto mb-12">
           Our events are coming soon! Join the waitlist to reserve your spot and stay updated.
@@ -57,11 +58,13 @@ export default function Events() {
         {events.length === 0 ? (
           <p className="text-gray-400">No events scheduled for the next month. Check back soon!</p>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {events.map((event) => (
               <div
                 key={event.id}
-                className="bg-gray-800 p-6 rounded-lg shadow text-left flex flex-col justify-between hover:scale-105 transform transition duration-500"
+                className="bg-gray-800 p-6 rounded-lg shadow text-left flex flex-col justify-between hover:scale-105 transform transition duration-500 border border-gray-700 hover:shadow-xl
+
+"
               >
                 <div>
                   <h3 className="text-xl font-semibold mb-2">{event.summary || "Untitled Event"}</h3>

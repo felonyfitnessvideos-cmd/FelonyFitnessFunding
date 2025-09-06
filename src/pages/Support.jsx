@@ -1,25 +1,12 @@
-// src/pages/Support.jsx
 import React from "react";
-import logo from "../assets/logo.png";
-import { Link } from "react-router-dom";
-import { Instagram, Music2, Mail, Youtube, Phone } from "lucide-react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export default function Support() {
   return (
-    <div className="bg-gray-900 text-gray-100 min-h-screen font-sans">
-      {/* STICKY NAVIGATION */}
-      <nav className="fixed top-0 left-0 w-full bg-gray-900 shadow z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link to="/">
-            <img src={logo} alt="Felony Fitness Logo" className="h-10 w-auto" />
-          </Link>
-          <div className="hidden md:flex space-x-6 text-sm uppercase">
-            <a href="#donate" className="hover:text-orange-400">Donate</a>
-            <a href="#sponsor" className="hover:text-orange-400">Sponsor</a>
-            <a href="#volunteer" className="hover:text-orange-400">Volunteer</a>
-          </div>
-        </div>
-      </nav>
+    <div className="bg-gray-900 text-gray-100 font-sans min-h-screen flex flex-col">
+      {/* GLOBAL NAV */}
+      <Navbar />
 
       {/* HERO */}
       <section className="bg-gray-800 py-32 px-6 text-center">
@@ -109,51 +96,8 @@ export default function Support() {
       </section>
 	  
 	  
-      {/* CONTACT FOOTER */}
-      <footer className="bg-gray-800 py-12 text-center text-gray-300 text-sm mt-16">
-        <div className="max-w-6xl mx-auto px-6 mb-8">
-          <h3 className="text-lg font-semibold mb-6 text-white">Connect With Us</h3>
-          <div className="flex flex-wrap justify-center items-center gap-6">
-            <a
-              href="https://www.instagram.com/davefelonyfitness/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:text-orange-400 transition"
-            >
-              <Instagram className="w-5 h-5" /> @davefelonyfitness
-            </a>
-            <a
-              href="https://www.tiktok.com/@felonyfitness.tiktok"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:text-orange-400 transition"
-            >
-              <Music2 className="w-5 h-5" /> @felonyfitness.tiktok
-            </a>
-            <a
-              href="mailto:felonyfitness@email.com"
-              className="flex items-center gap-2 hover:text-orange-400 transition"
-            >
-              <Mail className="w-5 h-5" /> felonyfitness@email.com
-            </a>
-            <a
-              href="mailto:felony.fitness.videos@gmail.com"
-              className="flex items-center gap-2 hover:text-orange-400 transition"
-            >
-              <Youtube className="w-5 h-5" /> felony.fitness.videos@gmail.com
-            </a>
-            <a
-              href="tel:+19513324841"
-              className="flex items-center gap-2 hover:text-orange-400 transition"
-            >
-              <Phone className="w-5 h-5" /> (951) 332-4841
-            </a>
-          </div>
-        </div>
-        <p className="text-gray-500 mt-6">
-          © {new Date().getFullYear()} Felony Fitness. All rights reserved.
-        </p>
-      </footer>
+       {/* GLOBAL FOOTER */}
+      <Footer />
     </div>
   );
 }
