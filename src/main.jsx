@@ -18,7 +18,7 @@ import Volunteer from "./pages/Volunteer.jsx";
 import VolunteerForm from "./pages/VolunteerForm.jsx";
 import Impact from "./pages/Impact.jsx";
 import Waitlist from "./pages/Waitlist.jsx";
-import Board from "./pages/board";
+import Board from "./pages/Board.jsx";
 import BoardForm from "./pages/BoardForm.jsx"; // 👈 New page
 
 createRoot(document.getElementById("root")).render(
