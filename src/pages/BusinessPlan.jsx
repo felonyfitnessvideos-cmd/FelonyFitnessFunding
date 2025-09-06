@@ -490,18 +490,55 @@ export default function BusinessPlan() {
 
 
 {activeTab === "financials" && <Financials />}
+</div>
 
-<section className="mt-8 text-center">
-  <button
-    className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded transition-colors"
-    onClick={() => alert("Request submitted!")}
+{/* REQUEST FORM */}
+<section className="bg-gray-800 px-6 py-12 sm:py-16 text-center mb-8 sm:mb-16">
+  <h2 className="text-3xl font-bold mb-4">Request Full Business Plan</h2>
+  <p className="text-gray-300 max-w-2xl mx-auto mb-8">
+    Interested in viewing the complete business plan? Fill out the form
+    below to request access.
+  </p>
+  <form
+    action="https://formcarry.com/s/yw8yXQxWraS"
+    method="POST"
+    className="max-w-lg mx-auto space-y-4"
   >
-    Request Complete Business Plan
-  </button>
+    <input
+      type="text"
+      name="name"
+      placeholder="Your Name"
+      required
+      className="w-full px-4 py-2 rounded bg-gray-700 text-gray-100"
+    />
+    <input
+      type="email"
+      name="email"
+      placeholder="Your Email"
+      required
+      className="w-full px-4 py-2 rounded bg-gray-700 text-gray-100"
+    />
+    <textarea
+      name="message"
+      placeholder="Your Message (optional)"
+      className="w-full px-4 py-2 rounded bg-gray-700 text-gray-100"
+    />
+    <input
+      type="hidden"
+      name="requestType"
+      value="Requesting a Business Plan"
+    />
+    <button
+      type="submit"
+      className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded transition-colors"
+    >
+      Submit Request
+    </button>
+  </form>
 </section>
 
 
-        </div>
+        
       </section>
 
       <Footer />

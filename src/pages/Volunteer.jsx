@@ -69,6 +69,24 @@ export default function Volunteer() {
           Volunteer Today
         </Link>
       </section>
+{/*CTA BoardOfDirectors*/}
+<section className="bg-gray-900 py-16 px-6 text-center">
+  <h2 className="text-2xl font-bold mb-4">Join Our Board of Directors</h2>
+  <p className="text-gray-300 max-w-2xl mx-auto mb-6">
+    Felony Fitness is in the process of becoming a California nonprofit 
+    corporation. We're looking for passionate, mission-driven leaders 
+    to serve on our Founding Board of Directors. 
+    If you believe in second chances, community wellness, and the power 
+    of fitness, we’d love to hear from you.
+  </p>
+  <a
+    href="/board"
+    className="inline-block bg-indigo-600 hover:bg-indigo-700 
+               text-white font-semibold py-3 px-6 rounded-2xl shadow-lg"
+  >
+    Learn More & Apply
+  </a>
+</section>
 
       {/* CONTACT FOOTER */}
       <footer className="bg-gray-800 py-12 text-center text-gray-300 text-sm mt-16">

@@ -107,7 +107,8 @@ export default function Support() {
           Get Involved
         </a>
       </section>
-
+	  
+	  
       {/* CONTACT FOOTER */}
       <footer className="bg-gray-800 py-12 text-center text-gray-300 text-sm mt-16">
         <div className="max-w-6xl mx-auto px-6 mb-8">

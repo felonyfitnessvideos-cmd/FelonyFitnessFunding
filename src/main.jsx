@@ -17,7 +17,9 @@ import JoinPrograms from "./pages/JoinPrograms.jsx";
 import Volunteer from "./pages/Volunteer.jsx";
 import VolunteerForm from "./pages/VolunteerForm.jsx";
 import Impact from "./pages/Impact.jsx";
-import Waitlist from "./pages/Waitlist.jsx"; // 👈 New waitlist page
+import Waitlist from "./pages/Waitlist.jsx";
+import Board from "./pages/board";
+import BoardForm from "./pages/BoardForm.jsx"; // 👈 New page
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -37,7 +39,9 @@ createRoot(document.getElementById("root")).render(
         <Route path="/volunteerform" element={<VolunteerForm />} />
         <Route path="/businessplan" element={<BusinessPlan />} />
         <Route path="/impact" element={<Impact />} />
-        <Route path="/waitlist" element={<Waitlist />} /> {/* 👈 New route */}
+        <Route path="/waitlist" element={<Waitlist />} />
+        <Route path="/board" element={<Board />} />
+        <Route path="/boardform" element={<BoardForm />} />		{/* 👈 New */}
       </Routes>
     </BrowserRouter>
   </StrictMode>
