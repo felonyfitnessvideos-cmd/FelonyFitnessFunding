@@ -1,5 +1,6 @@
 // src/pages/Resources.jsx
 import React from "react";
+import { ExternalLink } from "lucide-react"; // <-- import icon
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -9,36 +10,43 @@ export default function Resources() {
       name: "Starting Over, Inc.",
       link: "https://www.startingoverinc.org/",
       desc: "A grassroots nonprofit in Southern California providing transitional housing, reentry services, and advocacy for formerly incarcerated individuals.",
+      icon: "🏠", // optional emoji icon
     },
     {
       name: "Homeboy Industries",
       link: "https://homeboyindustries.org/",
       desc: "The largest gang intervention, rehabilitation, and re-entry program in the world.",
+      icon: "🤝",
     },
     {
       name: "Anti-Recidivism Coalition (ARC)",
       link: "https://antirecidivism.org/",
       desc: "Supports formerly incarcerated people through housing, mentoring, and advocacy.",
+      icon: "🎓",
     },
     {
       name: "Defy Ventures",
       link: "https://www.defyventures.org/",
       desc: "Entrepreneurship, leadership, and career-readiness training for people with criminal histories.",
+      icon: "🚀",
     },
     {
       name: "The Last Mile",
       link: "https://thelastmile.org/",
       desc: "Provides coding, technology, and career training to justice-impacted individuals.",
+      icon: "💻",
     },
     {
       name: "Prison to Employment Connection",
       link: "https://www.prisontoemploymentconnection.org/",
       desc: "Bridges the gap between employers and formerly incarcerated job seekers.",
+      icon: "📈",
     },
     {
       name: "Felony Fitness",
       link: "/programs",
       desc: "Community-based fitness, mentorship, and personal development programs.",
+      icon: "💪",
     },
   ];
 
@@ -60,17 +68,20 @@ export default function Resources() {
             {partners.map((partner, i) => (
               <div
                 key={i}
-                className="bg-gray-800 p-6 rounded-lg shadow hover:shadow-lg transition"
+                className="bg-gray-800 p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col justify-between"
               >
-                <h2 className="text-xl font-semibold mb-2">{partner.name}</h2>
+                <div className="flex items-center mb-2">
+                  <span className="text-2xl mr-3">{partner.icon}</span>
+                  <h2 className="text-xl font-semibold">{partner.name}</h2>
+                </div>
                 <p className="text-gray-400 mb-4">{partner.desc}</p>
                 <a
                   href={partner.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-semibold transition"
+                  className="inline-flex items-center px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-semibold transition"
                 >
-                  Visit Website
+                  Visit Website <ExternalLink className="ml-2 w-4 h-4" />
                 </a>
               </div>
             ))}
