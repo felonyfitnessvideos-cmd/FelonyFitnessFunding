@@ -35,14 +35,12 @@ export default function Sponsor() {
     alt="Felony Fitness participant training"
     className="w-full h-56 object-cover rounded-xl shadow-lg"
   />
-  <img
-    src="/sponsor2.jpg"
+  <img src={`${import.meta.env.BASE_URL}sponsor2-fixed.jpg`} 
     alt="Mentorship session"
     className="w-full h-56 object-cover rounded-xl shadow-lg"
   />
-  <img
-    src="/sponsor3.jpg"
-    alt="Community support event"
+   <img src={`${import.meta.env.BASE_URL}sponsor3-fixed.jpg`} 
+    alt="Mentorship session"
     className="w-full h-56 object-cover rounded-xl shadow-lg"
   />
 </div>
