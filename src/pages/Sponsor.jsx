@@ -9,7 +9,6 @@ export default function Sponsor() {
       {/* GLOBAL NAV */}
       <Navbar />
 
-
       {/* HERO */}
       <section className="bg-gray-800 py-24 px-6 text-center mt-16">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">Sponsor a Citizen</h1>
@@ -29,17 +28,23 @@ export default function Sponsor() {
           builds a supportive community.
         </p>
 
-        {/* Placeholder for future images */}
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
-          <div className="bg-gray-800 h-40 rounded-lg flex items-center justify-center text-gray-500">
-            Image Placeholder
-          </div>
-          <div className="bg-gray-800 h-40 rounded-lg flex items-center justify-center text-gray-500">
-            Image Placeholder
-          </div>
-          <div className="bg-gray-800 h-40 rounded-lg flex items-center justify-center text-gray-500">
-            Image Placeholder
-          </div>
+        {/* Responsive Images */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <img
+            src="/public/Sponsor1.png"
+            alt="Felony Fitness participant training"
+            className="w-full h-48 object-cover rounded-lg shadow-md"
+          />
+          <img
+            src="/public/sponsor2.jpg"
+            alt="Mentorship session"
+            className="w-full h-48 object-cover rounded-lg shadow-md"
+          />
+          <img
+            src="/public/sponsor3.jpg"
+            alt="Community support event"
+            className="w-full h-48 object-cover rounded-lg shadow-md"
+          />
         </div>
 
         {/* Sponsor CTA */}
