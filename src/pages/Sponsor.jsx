@@ -28,24 +28,26 @@ export default function Sponsor() {
           builds a supportive community.
         </p>
 
-        {/* Responsive Images */}
-<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+       {/* Responsive Images */}
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 mt-12">
   <img
-    src={`${import.meta.env.BASE_URL}sponsor1.jpg`}
+    src="/sponsor1.jpg"
     alt="Felony Fitness participant training"
-    className="w-full h-48 object-cover rounded-lg shadow-md"
+    className="w-full h-56 object-cover rounded-xl shadow-lg"
   />
   <img
-    src={`${import.meta.env.BASE_URL}sponsor2.jpg`}
+    src="/sponsor2.jpg"
     alt="Mentorship session"
-    className="w-full h-48 object-cover rounded-lg shadow-md"
+    className="w-full h-56 object-cover rounded-xl shadow-lg"
   />
   <img
-    src={`${import.meta.env.BASE_URL}sponsor3.jpg`}
+    src="/sponsor3.jpg"
     alt="Community support event"
-    className="w-full h-48 object-cover rounded-lg shadow-md"
+    className="w-full h-56 object-cover rounded-xl shadow-lg"
   />
 </div>
+
+
 
 
         {/* Sponsor CTA */}
