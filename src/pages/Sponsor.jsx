@@ -29,23 +29,24 @@ export default function Sponsor() {
         </p>
 
         {/* Responsive Images */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          <img
-            src="/public/Sponsor1.png"
-            alt="Felony Fitness participant training"
-            className="w-full h-48 object-cover rounded-lg shadow-md"
-          />
-          <img
-            src="/public/sponsor2.jpg"
-            alt="Mentorship session"
-            className="w-full h-48 object-cover rounded-lg shadow-md"
-          />
-          <img
-            src="/public/sponsor3.jpg"
-            alt="Community support event"
-            className="w-full h-48 object-cover rounded-lg shadow-md"
-          />
-        </div>
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+  <img
+    src={`${import.meta.env.BASE_URL}sponsor1.jpg`}
+    alt="Felony Fitness participant training"
+    className="w-full h-48 object-cover rounded-lg shadow-md"
+  />
+  <img
+    src={`${import.meta.env.BASE_URL}sponsor2.jpg`}
+    alt="Mentorship session"
+    className="w-full h-48 object-cover rounded-lg shadow-md"
+  />
+  <img
+    src={`${import.meta.env.BASE_URL}sponsor3.jpg`}
+    alt="Community support event"
+    className="w-full h-48 object-cover rounded-lg shadow-md"
+  />
+</div>
+
 
         {/* Sponsor CTA */}
         <a
