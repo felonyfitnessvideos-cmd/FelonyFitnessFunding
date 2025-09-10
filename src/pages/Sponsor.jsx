@@ -30,16 +30,15 @@ export default function Sponsor() {
 
        {/* Responsive Images */}
 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 mt-12">
-  <img
-    src="/sponsor1.jpg"
+  <img src="/sponsor1.jpg"
     alt="Felony Fitness participant training"
     className="w-full h-56 object-cover rounded-xl shadow-lg"
   />
-  <img src={`${import.meta.env.BASE_URL}sponsor2-fixed.jpg`} 
+  <img src="/sponsor2.jpg" 
     alt="Mentorship session"
     className="w-full h-56 object-cover rounded-xl shadow-lg"
   />
-   <img src={`${import.meta.env.BASE_URL}sponsor3-fixed.jpg`} 
+   <img src="/sponsor3.jpg" 
     alt="Mentorship session"
     className="w-full h-56 object-cover rounded-xl shadow-lg"
   />
