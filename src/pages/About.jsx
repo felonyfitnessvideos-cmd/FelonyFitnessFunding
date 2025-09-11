@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import { Instagram, Music2, Mail, Youtube, Phone } from "lucide-react";
 import SectionWrapper from "../components/SectionWrapper";
 import TeamCard from "../components/TeamCard";
-import Navbar from "../components/Navbar"; // <-- import the standardized Navbar
+import Navbar from "../components/Navbar"; 
+import davidHeadshot from "../assets/davidsharp.jpg"; // <-- New
 
 export default function About() {
   return (
@@ -40,7 +41,12 @@ export default function About() {
       {/* FOUNDER BIO */}
       <SectionWrapper id="bio" className="py-20 px-6 max-w-4xl mx-auto text-center">
         <h2 className="text-3xl font-bold mb-6">Founder Bio</h2>
-        <p className="text-gray-300 leading-relaxed mb-6">
+        <img 
+        src={davidHeadshot} 
+        alt="David Jason Sharp - Founder of Felony Fitness" 
+        className="w-40 h-40 object-cover rounded-full mx-auto mb-6 shadow-lg"
+          />
+       <p className="text-gray-300 leading-relaxed mb-6">
           David Jason Sharp is the founder of Felony Fitness, a platform dedicated to empowering 
           justice-impacted individuals through fitness, mentorship, and community. Drawing on 
           his own lived experiences, David understands the challenges faced by those re-entering 
@@ -103,7 +109,7 @@ export default function About() {
         <h2 className="text-3xl font-bold text-center mb-12">Meet the Team</h2>
         <div className="grid md:grid-cols-3 gap-8">
           <TeamCard
-            img="https://via.placeholder.com/150"
+            img={davidHeadshot}
             name="David Sharp"
             role="Founder & Visionary"
             bio="David’s journey through personal adversity inspired the creation of Felony Fitness. His leadership ensures the mission remains rooted in resilience, empowerment, and community impact."
