@@ -17,7 +17,15 @@ import VolunteerForm from "./pages/VolunteerForm.jsx";
 import Impact from "./pages/Impact.jsx";
 import Waitlist from "./pages/Waitlist.jsx";
 import Board from "./pages/Board.jsx";
-import BoardForm from "./pages/BoardForm.jsx"; // 👈 New page
+import BoardForm from "./pages/BoardForm.jsx"; 
+import AdminPage from './pages/AdminPage.jsx';
+import Modal from 'react-modal';
+import AnalyticsPage from './pages/AnalyticsPage.jsx';
+import UnsubscribePage from './pages/UnsubscribePage.jsx';
+import LoginPage from './pages/LoginPage.jsx'; 
+import ProtectedRoute from './components/ProtectedRoute.jsx'; // 👈 New
+
+Modal.setAppElement('#root'); 
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -38,7 +46,11 @@ createRoot(document.getElementById("root")).render(
         <Route path="/impact" element={<Impact />} />
         <Route path="/waitlist" element={<Waitlist />} />
         <Route path="/board" element={<Board />} />
-        <Route path="/boardform" element={<BoardForm />} />		{/* 👈 New */}
+        <Route path="/boardform" element={<BoardForm />} />		
+		<Route path="/admin" element={<ProtectedRoute><AdminPage /></ProtectedRoute>}  />
+		<Route path="/admin/analytics" element={<ProtectedRoute><AnalyticsPage /></ProtectedRoute>}  />
+		<Route path="/unsubscribe" element={<UnsubscribePage />} /> 
+		<Route path="/login" element={<LoginPage />} /> {/* 👈 New */}
       </Routes>
     </BrowserRouter>
   </StrictMode>

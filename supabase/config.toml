@@ -1,0 +1,33 @@
+
+[functions.send-email-campaign]
+enabled = true
+verify_jwt = true
+import_map = "./functions/send-email-campaign/deno.json"
+# Uncomment to specify a custom file path to the entrypoint.
+# Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
+entrypoint = "./functions/send-email-campaign/index.ts"
+# Specifies static files to be bundled with the function. Supports glob patterns.
+# For example, if you want to serve static HTML pages in your function:
+# static_files = [ "./functions/send-email-campaign/*.html" ]
+
+[functions.resend-webhook-handler]
+enabled = true
+verify_jwt = true
+import_map = "./functions/resend-webhook-handler/deno.json"
+# Uncomment to specify a custom file path to the entrypoint.
+# Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
+entrypoint = "./functions/resend-webhook-handler/index.ts"
+# Specifies static files to be bundled with the function. Supports glob patterns.
+# For example, if you want to serve static HTML pages in your function:
+# static_files = [ "./functions/resend-webhook-handler/*.html" ]
+
+[functions.handle-unsubscribe]
+enabled = true
+verify_jwt = true
+import_map = "./functions/handle-unsubscribe/deno.json"
+# Uncomment to specify a custom file path to the entrypoint.
+# Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
+entrypoint = "./functions/handle-unsubscribe/index.ts"
+# Specifies static files to be bundled with the function. Supports glob patterns.
+# For example, if you want to serve static HTML pages in your function:
+# static_files = [ "./functions/handle-unsubscribe/*.html" ]
