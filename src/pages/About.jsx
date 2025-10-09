@@ -115,23 +115,23 @@ export default function About() {
             bio="David’s journey through personal adversity inspired the creation of Felony Fitness. His leadership ensures the mission remains rooted in resilience, empowerment, and community impact."
           />
           <TeamCard
-            img="https://via.placeholder.com/150"
-            name="Jordan Lee"
-            role="Program Coordinator"
-            bio="Jordan brings expertise in community engagement and fitness program management to ensure participants get the best guidance and support."
+            img="https://wkmrdelhoeqhsdifrarn.supabase.co/storage/v1/object/sign/Staff%20Headshots/ChrisBlack.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81M2NhYTc4NC1hZjEzLTQxZTAtYjljYS02Njk3NjRiZWVkODEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJTdGFmZiBIZWFkc2hvdHMvQ2hyaXNCbGFjay5wbmciLCJpYXQiOjE3NjAwMjE4NDcsImV4cCI6MTc5MTU1Nzg0N30.ge_q-xN7ZLm7qzVXvd-PrVUqmAye9EbhZBe2unfIy5g"
+            name="Christopher Black"
+            role="Marketing Coordinator"
+            bio="Christopher brings expertise in marketing and decades of hands on experience in customer service. His drive to reach community parnters and clients exemplifies the backbone of our mission."
           />
           <TeamCard
-            img="https://via.placeholder.com/150"
-            name="Alex Martinez"
-            role="Mentorship Lead"
-            bio="Alex specializes in mentorship and life coaching, helping participants navigate challenges and stay accountable to their goals."
+            img="https://wkmrdelhoeqhsdifrarn.supabase.co/storage/v1/object/sign/Staff%20Headshots/JoeMcdonald.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81M2NhYTc4NC1hZjEzLTQxZTAtYjljYS02Njk3NjRiZWVkODEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJTdGFmZiBIZWFkc2hvdHMvSm9lTWNkb25hbGQucG5nIiwiaWF0IjoxNzYwMDIyMDI1LCJleHAiOjE3OTE1NTgwMjV9.8zwCmwmRpDDJm_tm56AbJDXXGSsVCqnVCW8Lm4GK-MQ"
+            name="Joseph McDonald"
+            role="Program Director"
+            bio="Joseph specializes in hands on training and brings a lifetime of experience in the health and fitness industry. His dedication to improve the lives of justice impacted people through health and fitness will push our team to the next level."
           />
-          <TeamCard
+         {/* <TeamCard
             img="https://via.placeholder.com/150"
             name="Taylor Nguyen"
             role="Nutrition Specialist"
             bio="Taylor guides participants through healthy nutrition practices, making wellness accessible and achievable for everyone."
-          />
+          />*/}
         </div>
       </SectionWrapper>
 

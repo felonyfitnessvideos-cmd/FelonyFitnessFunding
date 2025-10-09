@@ -16,7 +16,7 @@ serve(async (req) => {
 
     const sendPromises = recipients.map(recipientEmail => {
       // IMPORTANT: Update this URL to your live domain before deploying
-      const unsubscribeUrl = `http://localhost:5173/unsubscribe?email=${encodeURIComponent(recipientEmail)}`;
+      const unsubscribeUrl = `https://www.felony.fitness/unsubscribe?email=${encodeURIComponent(recipientEmail)}`;
       
       const emailHtml = `${body}<hr><p style="text-align:center;font-size:12px;color:#888;"><a href="${unsubscribeUrl}">Unsubscribe</a></p>`;
 
