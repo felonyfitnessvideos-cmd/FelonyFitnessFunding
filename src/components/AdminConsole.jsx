@@ -226,7 +226,7 @@ function AdminConsole() {
     navigate('/login');
   };
 
-  // NEW: Don't render the component until the user session is verified
+  // Don't render the component until the user session is verified
   if (!user) {
     return null; // Or a loading spinner, e.g., <div>Loading...</div>
   }
