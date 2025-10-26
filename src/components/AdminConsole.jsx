@@ -67,7 +67,7 @@ function AdminConsole() {
     else setTemplates(templatesData || []);
   }, []);
 
-  // UPDATED: These effects now depend on the `user` state
+  // The following effects depend on the `user` state
   useEffect(() => {
     if (user) fetchData();
   }, [user, fetchData]);
