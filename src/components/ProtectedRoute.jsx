@@ -19,24 +19,27 @@ function ProtectedRoute({ children }) {
         // For now, let's just check if the user is authenticated
         // You can add your admin email here, or implement proper role-based auth later
         
-        const adminEmails = [
-          'admin@felonyfitness.com',
-          'felonyfitnessvideos@gmail.com', // Add your actual admin email here
-          session.user.email // Temporarily allow any authenticated user for debugging
-        ];
+        // Get admin emails from environment variable or use defaults
+        const adminEmailsFromEnv = import.meta.env.VITE_ADMIN_EMAILS;
+        const adminEmails = adminEmailsFromEnv 
+          ? adminEmailsFromEnv.split(',').map(email => email.trim())
+          : [
+              'felonyfitnessvideos@gmail.com', // Default admin email - update this
+              'admin@felonyfitness.com'
+            ];
         
-        if (adminEmails.includes(session.user.email) || true) { // The "|| true" allows any authenticated user for now
+        if (adminEmails.includes(session.user.email)) {
           setIsAuthorized(true);
-          console.log("User authorized");
+          console.log("User authorized via admin email list");
         } else {
           setIsAuthorized(false);
-          console.log("User not authorized");
+          console.log("User not authorized - email not in admin list");
         }
         
         // COMMENTED OUT THE PROBLEMATIC USER_TAGS CHECK
         // Once you fix your database, you can uncomment this:
         /*
-        const ADMIN_TAG_ID = 'c6395c07-a0a0-40fe-a80d-8f3617bdad41';
+        const ADMIN_TAG_ID = import.meta.env.VITE_ADMIN_TAG_ID || 'c6395c07-a0a0-40fe-a80d-8f3617bdad41';
         
         try {
           const { data, error } = await supabase
