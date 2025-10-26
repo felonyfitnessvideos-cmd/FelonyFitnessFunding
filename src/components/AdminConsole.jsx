@@ -2,9 +2,8 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { supabase } from '../supabaseClient';
 import { Editor } from '@tinymce/tinymce-react';
 import Modal from 'react-modal';
-import { Link, useNavigate } from 'react-router-dom'; // NEW: Added useNavigate
+import { Link, useNavigate } from 'react-router-dom';
 
-// --- (Styles are the same) ---
 const customModalStyles = {
   content: {
     top: '50%', left: '50%', right: 'auto', bottom: 'auto', marginRight: '-50%',
@@ -15,6 +14,7 @@ const customModalStyles = {
 };
 
 function AdminConsole() {
+  const [user, setUser] = useState(null); // NEW: State to hold the user session
   const [users, setUsers] = useState([]);
   const [subject, setSubject] = useState('');
   const [body, setBody] = useState('');
@@ -31,7 +31,21 @@ function AdminConsole() {
   const [isTemplateModalOpen, setIsTemplateModalOpen] = useState(false);
   const [newTemplateName, setNewTemplateName] = useState('');
 
-  const navigate = useNavigate(); // NEW: Initialize useNavigate
+  const navigate = useNavigate();
+
+  // useEffect to check for an active session on component mount
+  useEffect(() => {
+    const checkUser = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        setUser(session.user);
+      } else {
+        // If no session, redirect to the login page
+        navigate('/login');
+      }
+    };
+    checkUser();
+  }, [navigate]);
 
   const fetchData = useCallback(async () => {
     let usersQuery = supabase.from('users').select(`id, email, full_name, phone_number, address, tags!left(id, name)`).eq('is_unsubscribed', false);
@@ -53,8 +67,14 @@ function AdminConsole() {
     else setTemplates(templatesData || []);
   }, []);
 
-  useEffect(() => { fetchData(); }, [fetchData]);
-  useEffect(() => { fetchStaticData(); }, [fetchStaticData]);
+  // The following effects depend on the `user` state
+  useEffect(() => {
+    if (user) fetchData();
+  }, [user, fetchData]);
+
+  useEffect(() => {
+    if (user) fetchStaticData();
+  }, [user, fetchStaticData]);
 
   const openModal = (user = null) => {
     if (user) {
@@ -201,15 +221,18 @@ function AdminConsole() {
     setIsLoading(false);
   };
 
-  // NEW: Function to handle logging out
   const handleLogout = async () => {
     await supabase.auth.signOut();
     navigate('/login');
   };
 
+  // Don't render the component until the user session is verified
+  if (!user) {
+    return null; // Or a loading spinner, e.g., <div>Loading...</div>
+  }
+
   return (
     <div style={{ padding: '2rem', fontFamily: 'Arial, sans-serif', maxWidth: '1000px', margin: 'auto' }}>
-      {/* NEW: Wrapper div for title and logout button */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h1>Felony Fitness - Marketing Console</h1>
         <button onClick={handleLogout} style={{ background: '#4a5568', color: 'white', border: 'none', padding: '8px 16px', borderRadius: '5px', cursor: 'pointer' }}>

@@ -13,28 +13,53 @@ function ProtectedRoute({ children }) {
       setSession(session);
 
       if (session) {
-        // --- This is the new logic ---
-        // 1. Define the required Tag ID
-        const ADMIN_TAG_ID = 'c6395c07-a0a0-40fe-a80d-8f3617bdad41'; // <-- PASTE YOUR TAG ID HERE
-
-        // 2. Check if the user is linked to that tag in the user_tags table
-        const { data, error } = await supabase
-          .from('user_tags')
-          .select()
-          .eq('user_id', session.user.id)
-          .eq('tag_id', ADMIN_TAG_ID)
-          .single(); // .single() returns one object or null
-
-        if (error && error.code !== 'PGRST116') { // Ignore 'PGRST116' (not found) errors
-          console.error("Error checking authorization:", error);
-        }
+        console.log("Checking authorization for user:", session.user.email);
         
-        // 3. If a record is found (data is not null), the user is authorized
-        if (data) {
+        // TEMPORARY SIMPLE AUTHORIZATION: 
+        // For now, let's just check if the user is authenticated
+        // You can add your admin email here, or implement proper role-based auth later
+        
+        // Get admin emails from environment variable or use defaults
+        const adminEmailsFromEnv = import.meta.env.VITE_ADMIN_EMAILS;
+        const adminEmails = adminEmailsFromEnv 
+          ? adminEmailsFromEnv.split(',').map(email => email.trim())
+          : [
+              'felonyfitnessvideos@gmail.com', // Default admin email - update this
+              'admin@felonyfitness.com'
+            ];
+        
+        if (adminEmails.includes(session.user.email)) {
           setIsAuthorized(true);
+          console.log("User authorized via admin email list");
         } else {
           setIsAuthorized(false);
+          console.log("User not authorized - email not in admin list");
         }
+        
+        // COMMENTED OUT THE PROBLEMATIC USER_TAGS CHECK
+        // Once you fix your database, you can uncomment this:
+        /*
+        const ADMIN_TAG_ID = import.meta.env.VITE_ADMIN_TAG_ID || 'c6395c07-a0a0-40fe-a80d-8f3617bdad41';
+        
+        try {
+          const { data, error } = await supabase
+            .from('user_tags')
+            .select('*')
+            .eq('user_id', session.user.id)
+            .eq('tag_id', ADMIN_TAG_ID)
+            .maybeSingle();
+
+          if (error) {
+            console.error("Error checking authorization:", error);
+            setIsAuthorized(false);
+          } else {
+            setIsAuthorized(!!data);
+          }
+        } catch (err) {
+          console.error("Authorization check failed:", err);
+          setIsAuthorized(false);
+        }
+        */
       }
       setLoading(false);
     };
