@@ -33,7 +33,7 @@ function AdminConsole() {
 
   const navigate = useNavigate();
 
-  // NEW: useEffect to check for an active session on component mount
+  // useEffect to check for an active session on component mount
   useEffect(() => {
     const checkUser = async () => {
       const { data: { session } } = await supabase.auth.getSession();
