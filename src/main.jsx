@@ -22,6 +22,7 @@ import AdminPage from './pages/AdminPage.jsx';
 import Modal from 'react-modal';
 import AnalyticsPage from './pages/AnalyticsPage.jsx';
 import UnsubscribePage from './pages/UnsubscribePage.jsx';
+import UnsubscribeTrainer from './pages/Unsubscribe-trainer.jsx';
 import LoginPage from './pages/LoginPage.jsx'; 
 import ProtectedRoute from './components/ProtectedRoute.jsx'; // 👈 New
 
@@ -50,6 +51,7 @@ createRoot(document.getElementById("root")).render(
 		<Route path="/admin" element={<ProtectedRoute><AdminPage /></ProtectedRoute>}  />
 		<Route path="/admin/analytics" element={<ProtectedRoute><AnalyticsPage /></ProtectedRoute>}  />
 		<Route path="/unsubscribe" element={<UnsubscribePage />} /> 
+		<Route path="/unsubscribe-trainer" element={<UnsubscribeTrainer />} /> 
 		<Route path="/login" element={<LoginPage />} /> {/* 👈 New */}
       </Routes>
     </BrowserRouter>
