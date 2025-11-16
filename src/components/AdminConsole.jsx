@@ -48,13 +48,46 @@ function AdminConsole() {
   }, [navigate]);
 
   const fetchData = useCallback(async () => {
-    let usersQuery = supabase.from('users').select(`id, email, full_name, phone_number, address, tags!left(id, name)`).eq('is_unsubscribed', false);
-    if (selectedCampaignTag !== 'all') {
-      usersQuery = supabase.from('users').select(`id, email, full_name, phone_number, address, tags!inner(id)`).eq('tags.id', selectedCampaignTag).eq('is_unsubscribed', false);
+    // Fetch users and their tags separately, then combine
+    const { data: usersData, error: usersError } = await supabase
+      .from('users')
+      .select('id, email, full_name, phone_number, address')
+      .eq('is_unsubscribed', false);
+    
+    if (usersError) {
+      console.error('Error fetching users:', usersError);
+      setUsers([]);
+      return;
     }
-    const { data: usersData, error: usersError } = await usersQuery;
-    if (usersError) console.error('Error fetching users:', usersError);
-    else setUsers(usersData || []);
+    
+    // If filtering by tag, filter users first
+    let userIds = usersData.map(u => u.id);
+    if (selectedCampaignTag !== 'all') {
+      const { data: filteredUserTags } = await supabase
+        .from('user_tags')
+        .select('user_id')
+        .eq('tag_id', selectedCampaignTag);
+      userIds = filteredUserTags?.map(ut => ut.user_id) || [];
+    }
+    
+    // Fetch tags for all users
+    const { data: userTagsData } = await supabase
+      .from('user_tags')
+      .select('user_id, tag_id, tags(id, name)')
+      .in('user_id', userIds);
+    
+    // Combine the data
+    const usersWithTags = usersData
+      .filter(user => userIds.includes(user.id))
+      .map(user => ({
+        ...user,
+        tags: (userTagsData || [])
+          .filter(ut => ut.user_id === user.id)
+          .map(ut => ut.tags)
+          .filter(tag => tag !== null)
+      }));
+    
+    setUsers(usersWithTags);
   }, [selectedCampaignTag]);
 
   const fetchStaticData = useCallback(async () => {
@@ -130,20 +163,41 @@ function AdminConsole() {
   const handleSaveUser = async (e) => {
     e.preventDefault();
     const { tags, ...userData } = newUser;
+    
+    console.log('Editing user:', editingUser);
+    console.log('User data to save:', userData);
+    console.log('Tags to save:', tags);
+    
     if (editingUser) {
       const { error } = await supabase.from('users').update(userData).eq('id', editingUser.id);
       if (error) return alert(`Error updating user: ${error.message}`);
-      await supabase.from('user_tags').delete().eq('user_id', editingUser.id);
+      
+      // Delete existing tags
+      const { error: deleteError } = await supabase.from('user_tags').delete().eq('user_id', editingUser.id);
+      if (deleteError) console.error('Error deleting user tags:', deleteError);
+      
+      // Insert new tags
       if (tags.length > 0) {
         const userTagsData = tags.map(tagId => ({ user_id: editingUser.id, tag_id: tagId }));
-        await supabase.from('user_tags').insert(userTagsData);
+        console.log('Inserting user tags:', userTagsData);
+        const { error: insertError } = await supabase.from('user_tags').insert(userTagsData);
+        if (insertError) {
+          console.error('Error inserting user tags:', insertError);
+          alert(`Error saving tags: ${insertError.message}`);
+        }
       }
     } else {
       const { data: insertedUser, error } = await supabase.from('users').insert(userData).select('id').single();
       if (error) return alert(`Error creating user: ${error.message}`);
+      
       if (tags.length > 0) {
         const userTagsData = tags.map(tagId => ({ user_id: insertedUser.id, tag_id: tagId }));
-        await supabase.from('user_tags').insert(userTagsData);
+        console.log('Inserting user tags:', userTagsData);
+        const { error: insertError } = await supabase.from('user_tags').insert(userTagsData);
+        if (insertError) {
+          console.error('Error inserting user tags:', insertError);
+          alert(`Error saving tags: ${insertError.message}`);
+        }
       }
     }
     closeModal();
@@ -198,25 +252,42 @@ function AdminConsole() {
     e.preventDefault();
     setIsLoading(true);
     setFeedback('');
-    const recipientEmails = filteredUsers.map(user => user.email).filter(Boolean);
-    if (recipientEmails.length === 0) {
+    
+    // Filter users who have email addresses
+    const recipientsWithEmails = filteredUsers.filter(user => user.email && user.email.trim() !== '');
+    
+    if (recipientsWithEmails.length === 0) {
         setFeedback('There are no users with emails in this group.');
         setIsLoading(false);
         return;
     }
-    const { data: newCampaign, error: campaignError } = await supabase.from('email_campaigns').insert({ subject, body, recipients_count: recipientEmails.length }).select('id').single();
+    
+    // Prepare recipient data with email and name for personalization
+    const recipients = recipientsWithEmails.map(user => ({
+      email: user.email,
+      name: user.full_name || user.email.split('@')[0] // Fallback to email username if no full_name
+    }));
+    
+    const { data: newCampaign, error: campaignError } = await supabase.from('email_campaigns').insert({ 
+      subject, 
+      body, 
+      recipients_count: recipients.length 
+    }).select('id').single();
+    
     if (campaignError) {
       setFeedback(`Error saving campaign: ${campaignError.message}`);
       setIsLoading(false);
       return;
     }
+    
     const campaignId = newCampaign.id;
     const { data, error } = await supabase.functions.invoke('send-email-campaign', {
-      body: { subject, body, recipients: recipientEmails, headers: { 'X-Entity-ID': campaignId } },
+      body: { subject, body, recipients, headers: { 'X-Entity-ID': campaignId } },
     });
+    
     if (error) setFeedback(`Error sending campaign: ${error.message || 'Function returned a non-2xx status code'}`);
     else {
-      setFeedback(`Campaign sent successfully to ${recipientEmails.length} users!`);
+      setFeedback(`Campaign sent successfully to ${recipients.length} users!`);
     }
     setIsLoading(false);
   };
@@ -345,9 +416,9 @@ function AdminConsole() {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <label style={{ display: 'block', marginBottom: '8px' }}>Tags</label>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
               {availableTags.map(tag => (
-                <label key={tag.id} style={{ marginBottom: '4px' }}>
+                <label key={tag.id} style={{ marginBottom: '4px', display: 'flex', alignItems: 'center' }}>
                   <input type="checkbox" checked={newUser.tags.includes(tag.id)} onChange={() => handleTagChange(tag.id)} style={{ marginRight: '8px' }}/>
                   {tag.name}
                 </label>

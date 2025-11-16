@@ -34,7 +34,31 @@ Once the `user_tags` table issue is resolved:
 - Regularly review and update the admin email list
 - Consider implementing proper role-based access control for production
 
-### 5. Troubleshooting
+### 5. Email Template Personalization
+
+Your email templates can now include personalized content. Use these placeholders in your email templates:
+
+- **`[Recipients Name]`** - Will be replaced with the user's full name
+- **`[Name]`** - Alternative placeholder for the user's name
+- **`[First Name]`** - Another name placeholder option
+- **`{{name}}`** - Mustache-style name placeholder
+- **`{{recipient_name}}`** - Alternative mustache-style placeholder
+
+**Example Template:**
+```
+Hello [Recipients Name],
+
+Welcome to Felony Fitness! We're excited to have you join our community...
+
+Best regards,
+The Felony Fitness Team
+```
+
+**Fallback Behavior:**
+- If a user doesn't have a `full_name` in the database, the system will use the username part of their email (before the @ symbol)
+- If no name is available, it will default to "Friend"
+
+### 6. Troubleshooting
 
 If you can't access the admin console:
 
