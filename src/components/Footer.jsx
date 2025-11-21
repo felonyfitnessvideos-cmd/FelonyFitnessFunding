@@ -25,9 +25,18 @@ export default function Footer() {
           </a>
         </div>
       </div>
-      <p className="text-gray-500 mt-6">
-        © {new Date().getFullYear()} Felony Fitness. All rights reserved.
-      </p>
+      <div className="text-gray-500 mt-6 space-y-2">
+        <p>© {new Date().getFullYear()} Felony Fitness. All rights reserved.</p>
+        <div className="flex justify-center gap-4 text-sm">
+          <a href="/privacy-policy" className="hover:text-orange-400 transition">
+            Privacy Policy
+          </a>
+          <span>|</span>
+          <a href="/terms-of-use" className="hover:text-orange-400 transition">
+            Terms of Use
+          </a>
+        </div>
+      </div>
     </footer>
   );
 }

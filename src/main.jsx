@@ -24,7 +24,9 @@ import AnalyticsPage from './pages/AnalyticsPage.jsx';
 import UnsubscribePage from './pages/UnsubscribePage.jsx';
 import UnsubscribeTrainer from './pages/Unsubscribe-trainer.jsx';
 import LoginPage from './pages/LoginPage.jsx'; 
-import ProtectedRoute from './components/ProtectedRoute.jsx'; // 👈 New
+import ProtectedRoute from './components/ProtectedRoute.jsx';
+import PrivacyPolicy from './pages/PrivacyPolicy.jsx';
+import TermsOfUse from './pages/TermsOfUse.jsx';
 
 Modal.setAppElement('#root'); 
 
@@ -52,7 +54,9 @@ createRoot(document.getElementById("root")).render(
 		<Route path="/admin/analytics" element={<ProtectedRoute><AnalyticsPage /></ProtectedRoute>}  />
 		<Route path="/unsubscribe" element={<UnsubscribePage />} /> 
 		<Route path="/unsubscribe-trainer" element={<UnsubscribeTrainer />} /> 
-		<Route path="/login" element={<LoginPage />} /> {/* 👈 New */}
+		<Route path="/privacy-policy" element={<PrivacyPolicy />} /> 
+		<Route path="/terms-of-use" element={<TermsOfUse />} /> 
+		<Route path="/login" element={<LoginPage />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
